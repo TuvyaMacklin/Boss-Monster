@@ -13,7 +13,7 @@ class Player():
                 return i
             
     def add_card(self, card):
-        self.hand.append(card)
+        self._hand.append(card)
 
     def get_hand(self):
         return self._hand
