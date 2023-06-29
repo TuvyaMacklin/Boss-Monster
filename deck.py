@@ -18,7 +18,7 @@ class Deck():
         Draw n cards from the deck
     '''
 
-    def __init__(self, cards):
+    def __init__(self, cards: list):
         # Store the cards as a stack
         self.cards = cards
     
@@ -26,7 +26,7 @@ class Deck():
         # Shuffle the cards
         random.shuffle(self.cards)
 
-    def draw(self, n = 1):
+    def draw(self, n: int = 1):
         # Draw n cards from the deck
         if n > len(self.cards):
             raise ValueError("Not enough cards in the deck")
