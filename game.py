@@ -5,6 +5,8 @@ class Game():
     
     def __init__(self, decks):
         self._town = []
+        self.players = []
+
         self._hero_deck = decks.hero_deck
         self._epic_hero_deck = decks.epic_hero_deck
         self._room_deck = decks.room_deck
