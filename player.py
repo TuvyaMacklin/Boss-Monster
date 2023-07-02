@@ -5,7 +5,8 @@ class Player():
     def __init__(self, hand, boss):
         self._dungeon = Dungeon(boss)
         self._hand = hand
-        self._heroes_at_entrance = []
+        self._heroes_won = []
+        self._heroes_lost = []
     
     def get_card(self, cardName):
         for i in self._hand:
