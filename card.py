@@ -11,9 +11,6 @@ class RoomCard(Card):
         self.type = type
         self.advanced = advanced
 
-    def can_be_built_on_top(self, new_card: RoomCard):
-        pass
-
 class HeroCard(Card):
     def __init__(self, name: str, description: str, health: int, treasure: str, value: int):
         super().__init__(name, description)
