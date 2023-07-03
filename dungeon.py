@@ -1,2 +1,6 @@
+from card import Card, RoomCard
+
 class Dungeon():
-    pass
+    def _init(self, boss: Card):
+        self._rooms = ([], [], [], [], [])
+        self._boss = boss
