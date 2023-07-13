@@ -1,3 +1,4 @@
+import csv
 import random
 from card import *
 
@@ -67,26 +68,26 @@ decks = {
    "spell_deck":[],
 }
 
-def start():
+def loadCards():
     with open("./boss_monster_cards.csv", 'r') as file:
         csvreader = csv.reader(file)
-    for row in csvreader:
-        match row[5]:
-            case "Boss":
-                for i in range(int(row[8])):
-                    decks["boss_deck"].append(cardify(row))
-            case "Hero":
-                for i in range(int(row[8])):
-                    decks["hero_deck"].append(cardify(row))
-            case "Room":
-                for i in range(int(row[8])):
-                    decks["room_deck"].append(cardify(row))
-            case "Spell":
-                for i in range(int(row[8])):
-                    decks["spell_deck"].append(row)
-    decks["boss_deck"] = Deck(decks["boss_deck"])
-    decks["epic_hero_deck"] = Deck(decks["epic_hero_deck"])
-    decks["hero_deck"] = Deck(decks["hero_deck"])
-    decks["room_deck"] = Deck(decks["room_deck"])
-    decks["spell_deck"] = Deck(decks["spell_deck"])
-    print(decks)
+        for row in csvreader:
+            match row[5]:
+                case "Boss":
+                    for i in range(int(row[8])):
+                        decks["boss_deck"].append(cardify(row))
+                case "Hero":
+                    for i in range(int(row[8])):
+                        decks["hero_deck"].append(cardify(row))
+                case "Room":
+                    for i in range(int(row[8])):
+                        decks["room_deck"].append(cardify(row))
+                case "Spell":
+                    for i in range(int(row[8])):
+                        decks["spell_deck"].append(row)
+        decks["boss_deck"] = Deck(decks["boss_deck"])
+        decks["epic_hero_deck"] = Deck(decks["epic_hero_deck"])
+        decks["hero_deck"] = Deck(decks["hero_deck"])
+        decks["room_deck"] = Deck(decks["room_deck"])
+        decks["spell_deck"] = Deck(decks["spell_deck"])
+        print(decks)
