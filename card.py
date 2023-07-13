@@ -35,12 +35,18 @@ class HeroCard(Card):
         self.value = value 
 
     def __repr__(self):
-        # Cleric (Ordinary Hero)4,Cleric
+        # Cleric (Ordinary Hero) - HP: 4 | Wants: Cleric | Value: 1
 
-        output = ""
-        output += self.name + " (" + str(self.value) + ") - HP: " + 
-
-        output += self.treasure
+        hero_type = " Hero"
+        if self.value == 1:
+            hero_type = "Ordinary" + hero_type
+        else:
+            hero_type = "Epic" + hero_type
+            
+        output = self.name + " (" + hero_type + ") - "
+        output += "HP: " + str(self.health) + " | "
+        output += "Wants: " + self.treasure + " | "
+        output += "Value: " + str(self.value)
 
         return output
 
