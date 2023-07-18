@@ -52,11 +52,11 @@ class Game():
 
             self.players.append(Player(hand, boss))
             
-    def _getInput(prompt: str, min: int, max: int):
+    def _getInput(self, prompt: str, min: int, max: int):
         response = input(prompt)
-        if (response >= min & response <= max):
+        if (int(response) >= min and int(response) <= max):
             return response
         else:
             print("Please enter a number between", min, "and", max)
-            return _getInput(prompt, min, max)
+            return self._getInput(prompt, min, max)
         
