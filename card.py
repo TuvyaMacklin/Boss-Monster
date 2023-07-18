@@ -17,13 +17,13 @@ class RoomCard(Card):
 
 
         output = ""
-        output += self.name + " (" + self.type + ") - Treasures: "
+        output += self.name + " (" + self.type + ") | Treasures: "
 
         for treasure in self.treasures[:-1]:
             output += treasure + ", "
         output += self.treasures[-1] + " | "
 
-        output += "Damage: " + self.damage
+        output += "Damage: " + str(self.damage)
 
         return output
 
@@ -45,12 +45,22 @@ class HeroCard(Card):
             
         output = self.name + " (" + hero_type + ") - "
         output += "HP: " + str(self.health) + " | "
-        output += "Wants: " + self.treasure + " | "
+        output += "Wants: " + str(self.treasure) + " | "
         output += "Value: " + str(self.value)
 
         return output
 
 class BossCard(Card):
-    def __init__(self, name: str, description: str, treasure: str):
+    def __init__(self, name: str, description: str, exp: int, treasure: str):
         super().__init__(name, description)
+        self.exp = exp
         self.treasure = treasure
+
+    def __repr__(self):
+        # Gorgona - Exp: 750 | Treasure: Money
+        output = self.name
+
+        output += " - Exp: " + str(self.exp) + " | "
+        output += "Treasure: " + str(self.treasure)
+
+        return output
