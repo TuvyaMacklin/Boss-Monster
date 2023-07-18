@@ -51,6 +51,7 @@ class Game():
             boss = self._boss_deck.draw()[0]
 
             self.players.append(Player(hand, boss))
+            
     def _getInput(prompt: str, min: int, max: int):
         response = input(prompt)
         if (response >= min & response <= max):
