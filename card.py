@@ -10,6 +10,22 @@ class RoomCard(Card):
         self.treasures = treasures
         self.type = type
         self.advanced = advanced
+    
+    def __repr__(self):
+        # Return a string representation of a room card
+        # Monster's Ballroom (Advanced Monster Room) - Treasures: Fighter | Damage: *
+
+
+        output = ""
+        output += self.name + " (" + self.type + ") | Treasures: "
+
+        for treasure in self.treasures[:-1]:
+            output += treasure + ", "
+        output += self.treasures[-1] + " | "
+
+        output += "Damage: " + str(self.damage)
+
+        return output
 
 class HeroCard(Card):
     def __init__(self, name: str, description: str, health: int, treasure: str, value: int):
@@ -18,7 +34,33 @@ class HeroCard(Card):
         self.treasure = treasure
         self.value = value 
 
+    def __repr__(self):
+        # Cleric (Ordinary Hero) - HP: 4 | Wants: Cleric | Value: 1
+
+        hero_type = " Hero"
+        if self.value == 1:
+            hero_type = "Ordinary" + hero_type
+        else:
+            hero_type = "Epic" + hero_type
+            
+        output = self.name + " (" + hero_type + ") - "
+        output += "HP: " + str(self.health) + " | "
+        output += "Wants: " + str(self.treasure) + " | "
+        output += "Value: " + str(self.value)
+
+        return output
+
 class BossCard(Card):
-    def __init__(self, name: str, description: str, treasure: str):
+    def __init__(self, name: str, description: str, exp: int, treasure: str):
         super().__init__(name, description)
+        self.exp = exp
         self.treasure = treasure
+
+    def __repr__(self):
+        # Gorgona - Exp: 750 | Treasure: Money
+        output = self.name
+
+        output += " - Exp: " + str(self.exp) + " | "
+        output += "Treasure: " + str(self.treasure)
+
+        return output
