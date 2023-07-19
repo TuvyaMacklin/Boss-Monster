@@ -1,3 +1,17 @@
+import os
+
+def _set_path():
+    # Add the root of the venv to the path
+    # This is necessary to import the selective_search module
+
+    # Get the path to the venv
+    venv_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    # Add the venv path to the path
+    import sys
+    sys.path.append(venv_path)
+
+_set_path()
 import csv
 from card import *
 from game import Game
@@ -6,7 +20,7 @@ from deck import Deck
 def cardify(details):
    match details[5]:
       case "Boss":
-         return BossCard(details[1], details[6], details[4])
+         return BossCard(details[1], details[6], details[3], details[4])
       case "Room":
          match details[2]:
             case "Monster Room":
@@ -33,7 +47,7 @@ decks = {
 }
 
 def loadCards():
-    with open("./boss_monster_cards.csv", 'r') as file:
+    with open("../boss_monster_cards.csv", 'r') as file:
         csvreader = csv.reader(file)
         for row in csvreader:
             match row[5]:
