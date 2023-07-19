@@ -42,7 +42,7 @@ class Deck():
 def cardify(details):
    match details[5]:
       case "Boss":
-         return BossCard(details[1], details[6], details[4])
+         return BossCard(details[1], details[6], details[3], details[4])
       case "Room":
          match details[2]:
             case "Monster Room":
