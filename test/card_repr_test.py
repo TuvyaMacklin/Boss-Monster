@@ -24,3 +24,15 @@ boss = BossCard("Gorgona", "eats humans", 750, "Money")
 print(hero)
 print(room)
 print(boss)
+
+from deck import loadCards
+
+decks = loadCards()
+
+print(decks["boss_deck"])
+print(decks["hero_deck"])
+print(decks["room_deck"])
+print(decks["epic_hero_deck"])
+
+decks["boss_deck"].shuffle()
+print(decks["boss_deck"])

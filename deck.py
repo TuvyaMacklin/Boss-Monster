@@ -23,6 +23,13 @@ class Deck():
     def __init__(self, cards: list):
         # Store the cards as a stack
         self.cards = cards
+
+    def __repr__(self):
+        output = ""
+        for card in self.cards:
+            output += str(card) + "\n"
+
+        return output
     
     def shuffle(self):
         # Shuffle the cards
