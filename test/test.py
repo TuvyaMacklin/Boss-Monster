@@ -46,7 +46,7 @@ def loadCards():
         "boss_deck":[],
         "spell_deck":[],
     }
-    with open("../boss_monster_cards.csv", 'r') as file:
+    with open("./boss_monster_cards.csv", 'r') as file:
         csvreader = csv.reader(file)
         for row in csvreader:
             match row[5]:
@@ -54,8 +54,12 @@ def loadCards():
                     for i in range(int(row[8])):
                         decks["boss_deck"].append(cardify(row))
                 case "Hero":
-                    for i in range(int(row[8])):
-                        decks["hero_deck"].append(cardify(row))
+                    if(row[2] == "Ordinary Hero"):
+                        for i in range(int(row[8])):
+                            decks["hero_deck"].append(cardify(row))
+                    if(row[2] == "Epic Hero"):
+                        for i in range(int(row[8])):
+                            decks["epic_hero_deck"].append(cardify(row))
                 case "Room":
                     for i in range(int(row[8])):
                         decks["room_deck"].append(cardify(row))
@@ -69,4 +73,5 @@ def loadCards():
         decks["spell_deck"] = Deck(decks["spell_deck"])
         return decks
 gameManager = Game(loadCards())
+print(gameManager._hero_deck.draw(30))
 print(gameManager._getInput("Pick a card: ", 1, 5))
