@@ -38,15 +38,14 @@ def cardify(details):
             case "Epic Hero":
                 return HeroCard(details[1], details[6], details[3], details[4], 2)
 
-decks = {
-   "hero_deck":[],
-   "epic_hero_deck":[],
-   "room_deck":[],
-   "boss_deck":[],
-   "spell_deck":[],
-}
-
 def loadCards():
+    decks = {
+        "hero_deck":[],
+        "epic_hero_deck":[],
+        "room_deck":[],
+        "boss_deck":[],
+        "spell_deck":[],
+    }
     with open("../boss_monster_cards.csv", 'r') as file:
         csvreader = csv.reader(file)
         for row in csvreader:
@@ -68,7 +67,6 @@ def loadCards():
         decks["hero_deck"] = Deck(decks["hero_deck"])
         decks["room_deck"] = Deck(decks["room_deck"])
         decks["spell_deck"] = Deck(decks["spell_deck"])
-        print(decks)
-loadCards()
-gameManager = Game(decks)
+        return decks
+gameManager = Game(loadCards())
 print(gameManager._getInput("Pick a card: ", 1, 5))
