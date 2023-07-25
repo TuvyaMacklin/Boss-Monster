@@ -76,8 +76,12 @@ def loadCards():
                     for i in range(int(row[8])):
                         decks["boss_deck"].append(cardify(row))
                 case "Hero":
-                    for i in range(int(row[8])):
-                        decks["hero_deck"].append(cardify(row))
+                    if(row[2] == "Ordinary Hero"):
+                        for i in range(int(row[8])):
+                            decks["hero_deck"].append(cardify(row))
+                    if(row[2] == "Epic Hero"):
+                        for i in range(int(row[8])):
+                            decks["epic_hero_deck"].append(cardify(row))
                 case "Room":
                     for i in range(int(row[8])):
                         decks["room_deck"].append(cardify(row))
